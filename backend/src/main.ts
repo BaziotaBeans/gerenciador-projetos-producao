@@ -10,9 +10,11 @@ import { authMiddleware } from "./middleware/auth.middleware";
 const app = express();
 
 if (process.env.NODE_ENV === "production") {
-  cors({
-    origin: process.env.FRONTEND_URL,
-  });
+  app.use(
+    cors({
+      origin: process.env.FRONTEND_URL,
+    }),
+  );
 } else {
   app.use(
     cors({
